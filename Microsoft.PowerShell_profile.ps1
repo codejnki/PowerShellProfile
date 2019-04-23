@@ -1,5 +1,11 @@
+# Remove curl alias
+Remove-Item Alias:\curl -ErrorAction  SilentlyContinue
+
 Import-Module pscolor
 #Import-Module pscx
+
+Import-Module PSBashCompletions
+Register-BashArgumentCompleter "kubectl" c:\users\phstockton\completions\kubectl_completions.sh
 
 # Ensure that Get-ChildItemColor is loaded
 Import-Module Get-ChildItemColor
@@ -11,8 +17,7 @@ Import-Module -Name oh-my-posh
 Set-Alias ls Get-ChildItemColor -Option AllScope
 Set-Alias l Get-ChildItemColorFormatWide -Option AllScope
 
-# Remove curl alias
-#remove-item alias:curl
+
 
 # Helper function to set location to the User Profile directory
 function cuserprofile { Set-Location ~ }
@@ -28,22 +33,22 @@ if (Test-Path($ChocolateyProfile)) {
 # Helper function to show Unicode character
 function U
 {
-  param
-  (
-    [int] $Code
-  )
-
-  if ((0 -le $Code) -and ($Code -le 0xFFFF))
-  {
-    return [char] $Code
-  }
-
-  if ((0x10000 -le $Code) -and ($Code -le 0x10FFFF))
-  {
-    return [char]::ConvertFromUtf32($Code)
-  }
-
-  throw "Invalid character code $Code"
+    param
+    (
+        [int] $Code
+    )
+ 
+    if ((0 -le $Code) -and ($Code -le 0xFFFF))
+    {
+        return [char] $Code
+    }
+ 
+    if ((0x10000 -le $Code) -and ($Code -le 0x10FFFF))
+    {
+        return [char]::ConvertFromUtf32($Code)
+    }
+ 
+    throw "Invalid character code $Code"
 }
 
 # Ensure posh-git is loaded
@@ -52,7 +57,7 @@ function U
 # Start SshAgent if not already
 # Need this if you are using github as your remote git repository
 if (! (ps | ? { $_.Name -eq 'pageant'})) {
-  Start-SshAgent
+    Start-SshAgent
 }
 
 Set-Theme Paradox
