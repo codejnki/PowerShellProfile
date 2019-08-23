@@ -5,7 +5,7 @@ Import-Module pscolor
 #Import-Module pscx
 
 Import-Module PSBashCompletions
-Register-BashArgumentCompleter "kubectl" c:\users\phstockton\completions\kubectl_completions.sh
+Register-BashArgumentCompleter "kubectl" %USERPROFILE%\completions\kubectl_completions.sh
 
 # Ensure that Get-ChildItemColor is loaded
 Import-Module Get-ChildItemColor
