@@ -16,8 +16,8 @@ Import-Module -Name oh-my-posh
 # Set l and ls alias to use the new Get-ChildItemColor cmdlets
 Set-Alias ls Get-ChildItemColor -Option AllScope
 Set-Alias l Get-ChildItemColorFormatWide -Option AllScope
-
-
+Set-Alias cat bat -Option AllScope
+New-Alias which get-command
 
 # Helper function to set location to the User Profile directory
 function cuserprofile { Set-Location ~ }
@@ -61,3 +61,4 @@ if (! (ps | ? { $_.Name -eq 'pageant'})) {
 }
 
 Set-Theme Paradox
+
